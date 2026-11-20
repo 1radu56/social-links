@@ -3,63 +3,258 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090b10">
-  <meta name="description" content="Official social links for 1radu56 and SoundDex">
-  <title>1radu56 — Links</title>
+  <meta name="theme-color" content="#0d1010">
+  <meta name="description" content="Official social links for 1radu56, creator of SoundDex.">
+  <title>1radu56 — Social Links</title>
   <style>
-    *{box-sizing:border-box}
-    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#090b10;color:#f6f8fb;font:500 16px/1.4 system-ui,sans-serif}
-    main{width:min(100%,560px)}
-    h1{margin:0;font-size:clamp(2.4rem,10vw,4rem);line-height:1}
-    p{margin:10px 0 24px;color:#93a0b4}
-    nav{display:grid;gap:10px}
-    a{display:flex;justify-content:space-between;padding:15px 18px;border:1px solid #2a3342;border-radius:10px;background:#11151d;color:inherit;text-decoration:none;transition:.15s}
-    a:hover,a:focus-visible{border-color:#b8f216;transform:translateY(-2px);outline:none}
-    a::after{content:"↗";color:#93a0b4}
-    #status{text-align:center}
+    :root {
+      color-scheme: dark;
+      --background: #0d1010;
+      --surface: #151919;
+      --line: #2b3331;
+      --text: #f1f5f2;
+      --muted: #a3afaa;
+      --accent: #c9fb79;
+      font-family: system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    main {
+      width: min(100% - 36px, 760px);
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 64px) 0 48px;
+    }
+
+    .profile {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 20px;
+      padding: clamp(24px, 5vw, 44px);
+      border: 1px solid #364239;
+      border-radius: 24px;
+      overflow: hidden;
+      background: radial-gradient(ellipse at top right, #34452a, #171f1b 54%, #141a19);
+    }
+
+    .profile::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, transparent 0 14px, #c9fb7910 14px 15px);
+      mask-image: linear-gradient(105deg, transparent 35%, black);
+    }
+
+    .avatar {
+      display: block;
+      width: clamp(64px, 13vw, 96px);
+      height: auto;
+      aspect-ratio: 1;
+      border: 2px solid var(--accent);
+      border-radius: 24%;
+      background: var(--surface);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 8vw, 4.4rem);
+      line-height: .96;
+      letter-spacing: -.075em;
+      overflow-wrap: anywhere;
+    }
+
+    .profile p { margin: 10px 0 0; color: var(--muted); }
+    .profile strong { color: var(--accent); font-weight: 650; }
+
+    #links { display: grid; gap: 28px; margin-top: 32px; }
+
+    h2 {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font: 650 .78rem/1.4 ui-monospace, monospace;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 68px;
+      height: 100%;
+      padding: 10px 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 650;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: background-color .18s, border-color .18s, transform .18s;
+    }
+
+    .initials {
+      flex: 0 0 36px;
+      display: grid;
+      place-items: center;
+      height: 36px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--tint), var(--surface) 86%);
+      color: var(--tint);
+      font: 700 .78rem ui-monospace, monospace;
+    }
+
+    .arrow { flex-shrink: 0; margin-left: auto; color: var(--muted); }
+    .link:hover, .link:focus-visible { border-color: var(--tint); background: #1b2220; }
+    .link:hover .arrow, .link:focus-visible .arrow { color: var(--tint); }
+    .link:focus-visible { outline: 2px solid var(--tint); outline-offset: 3px; }
+    #status { color: var(--muted); }
+
+    @media (hover: hover) {
+      .link:hover { transform: translateY(-2px); }
+    }
+
+    @media (max-width: 490px) {
+      ul { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .link { transition: none; }
+      .link:hover { transform: none; }
+    }
   </style>
 </head>
 <body>
   <main>
-    <h1>1radu56</h1>
-    <p>SoundDex creator · official links</p>
-    <nav id="links"><span id="status">Loading…</span></nav>
+    <header class="profile">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/205533361?v=4&amp;s=192"
+        alt="" width="96" height="96">
+      <div>
+        <h1>1radu56</h1>
+        <p>Creator of <strong>SoundDex</strong></p>
+      </div>
+    </header>
+
+    <nav aria-label="Official links">
+      <div id="links"></div>
+      <p id="status" role="status"></p>
+      <noscript><p><a href="links.txt">View the full list of links</a></p></noscript>
+    </nav>
   </main>
 
   <script>
-    const names={
-      "tiktok.com":"TikTok","facebook.com":"Facebook","reddit.com":"Reddit",
-      "twitch.tv":"Twitch","modrinth.com":"Modrinth","roblox.com":"Roblox",
-      "x.com":"X","discord.com":"Discord"
-    };
+    const categories = ["Projects", "Gaming & streaming", "Social", "Support", "Other"];
+    const platforms = new Map([
+      ["github.com", ["GitHub", "GH", "Projects", "#c9fb79"]],
+      ["modrinth.com", ["Modrinth", "MR", "Projects", "#65efa1"]],
+      ["twitch.tv", ["Twitch", "TW", "Gaming & streaming", "#c4a3ff"]],
+      ["medal.tv", ["Medal", "MD", "Gaming & streaming", "#ffcb77"]],
+      ["roblox.com", ["Roblox", "RB", "Gaming & streaming", "#9fc5ff"]],
+      ["kick.com", ["Kick", "K", "Gaming & streaming", "#a8ff80"]],
+      ["facebook.com", ["Facebook", "FB", "Social", "#97c4ff"]],
+      ["instagram.com", ["Instagram", "IG", "Social", "#ffabdb"]],
+      ["tiktok.com", ["TikTok", "TT", "Social", "#85efe8"]],
+      ["x.com", ["X", "X", "Social", "#ecf1ef"]],
+      ["reddit.com", ["Reddit", "RD", "Social", "#ffac8a"]],
+      ["discord.com", ["Discord", "DC", "Social", "#b4baff"]],
+      ["threads.com", ["Threads", "TH", "Social", "#e4e9e6"]],
+      ["ko-fi.com", ["Ko-fi", "KF", "Support", "#ffaeae"]]
+    ]);
 
-    fetch("links.txt")
-      .then(response=>response.ok?response.text():Promise.reject())
-      .then(text=>{
-        const list=document.querySelector("#links");
-        list.replaceChildren();
+    function parseLink(line) {
+      const value = line.trim();
+      if (!value) return null;
 
-        for(const line of text.split(/\r?\n/)){
-          const value=line.trim();
-          if(!value)continue;
+      try {
+        const url = new URL(value);
+        if (url.protocol !== "https:" && url.protocol !== "http:") return null;
 
-          try{
-            const url=new URL(value);
-            if(!["http:","https:"].includes(url.protocol))continue;
+        const host = url.hostname.replace(/^www\./, "");
+        const [name, initials, category, tint] =
+          platforms.get(host) ?? [host, host.slice(0, 2).toUpperCase(), "Other", "#c9fb79"];
+        return { url, name, initials, category, tint };
+      } catch {
+        return null;
+      }
+    }
 
-            const host=url.hostname.replace(/^www\./,"");
-            const link=document.createElement("a");
-            link.href=url.href;
-            link.textContent=names[host]||host;
-            link.target="_blank";
-            link.rel="noopener noreferrer";
-            list.append(link);
-          }catch{}
+    function createLink({ url, name, initials, tint }) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.className = "link";
+      link.href = url.href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.style.setProperty("--tint", tint);
+
+      const icon = document.createElement("span");
+      icon.className = "initials";
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = initials;
+
+      const arrow = document.createElement("span");
+      arrow.className = "arrow";
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = "↗";
+
+      link.append(icon, name, arrow);
+      item.append(link);
+      return item;
+    }
+
+    async function loadLinks() {
+      const links = document.querySelector("#links");
+      const status = document.querySelector("#status");
+      status.textContent = "Loading links…";
+
+      try {
+        const response = await fetch("links.txt");
+        if (!response.ok) throw new Error("Link list unavailable");
+
+        const entries = (await response.text()).split(/\r?\n/).map(parseLink).filter(Boolean);
+        const sections = document.createDocumentFragment();
+
+        for (const category of categories) {
+          const entriesInCategory = entries.filter(entry => entry.category === category);
+          if (!entriesInCategory.length) continue;
+
+          const section = document.createElement("div");
+          const title = document.createElement("h2");
+          const list = document.createElement("ul");
+          title.textContent = category;
+          list.append(...entriesInCategory.map(createLink));
+          section.append(title, list);
+          sections.append(section);
         }
 
-        if(!list.children.length)list.textContent="No links yet.";
-      })
-      .catch(()=>document.querySelector("#status").textContent="Could not load links.");
+        links.replaceChildren(sections);
+        status.textContent = entries.length ? "" : "No links yet.";
+      } catch {
+        status.textContent = "Could not load links. Try refreshing the page.";
+      }
+    }
+
+    loadLinks();
   </script>
 </body>
 </html>
