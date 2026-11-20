@@ -166,6 +166,7 @@
     const categories = ["Projects", "Gaming & streaming", "Social", "Support", "Other"];
     const platforms = new Map([
       ["github.com", ["GitHub", "GH", "Projects", "#c9fb79"]],
+      ["itch.io", ["itch.io", "IT", "Projects", "#ff9ca4"]],
       ["modrinth.com", ["Modrinth", "MR", "Projects", "#65efa1"]],
       ["curseforge.com", ["CurseForge", "CF", "Projects", "#ffab89"]],
       ["twitch.tv", ["Twitch", "TW", "Gaming & streaming", "#c4a3ff"]],
@@ -195,7 +196,7 @@
 
         const host = url.hostname.replace(/^www\./, "");
         const [name, initials, category, tint] =
-          platforms.get(host) ?? [host, host.slice(0, 2).toUpperCase(), "Other", "#c9fb79"];
+          platforms.get(host.endsWith(".itch.io") ? "itch.io" : host) ?? [host, host.slice(0, 2).toUpperCase(), "Other", "#c9fb79"];
         return { url, name, initials, category, tint };
       } catch {
         return null;
@@ -232,7 +233,7 @@
       status.textContent = "Loading links…";
 
       try {
-        const response = await fetch("links.txt?v=54bd03756618", { cache: "no-cache" });
+        const response = await fetch("links.txt?v=91be9f93776f", { cache: "no-cache" });
         if (!response.ok) throw new Error("Link list unavailable");
 
         const entries = (await response.text()).split(/\r?\n/).map(parseLink).filter(Boolean);
