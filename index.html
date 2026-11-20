@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0d1010">
-  <meta name="description" content="Official social links for 1radu56, creator of SoundDex.">
+  <meta name="description" content="Official social and project links for 1radu56.">
   <title>1radu56 — Social Links</title>
   <style>
     :root {
@@ -151,7 +151,7 @@
         alt="" width="96" height="96">
       <div>
         <h1>1radu56</h1>
-        <p>Creator of <strong>SoundDex</strong></p>
+        <p><strong>Cooking up something new</strong></p>
       </div>
     </header>
 
@@ -232,7 +232,7 @@
       status.textContent = "Loading links…";
 
       try {
-        const response = await fetch("links.txt");
+        const response = await fetch("links.txt?v=54bd03756618", { cache: "no-cache" });
         if (!response.ok) throw new Error("Link list unavailable");
 
         const entries = (await response.text()).split(/\r?\n/).map(parseLink).filter(Boolean);
